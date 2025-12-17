@@ -6,6 +6,6 @@ test("GET to api/v1/status/postgres should return 200", async () => {
   expect(responseBody.postgres_version).toBeDefined();
   console.log(responseBody);
 
-  const expectedVersion = "16.11 - resposta padrão";
+  const expectedVersion = "16.0";
   expect(responseBody.postgres_version).toEqual(expectedVersion);
 });
