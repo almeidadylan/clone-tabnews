@@ -4,6 +4,7 @@ test("Get to apt/v1/status should return 200", async () => {
 
   const responseBody = await response.json();
   expect(responseBody.updated_at).toBeDefined();
+  expect(responseBody.postgres_version).toBeDefined();
 
   const parseUpdatedAt = new Date(responseBody.updated_at).toISOString();
   expect(responseBody.updated_at).toEqual(parseUpdatedAt);
