@@ -1,5 +1,5 @@
 import database from "infra/database.js";
-import getPostgresVersion from "/pages/api/v1/status/postgres/getPostgresVersion.js";
+import getPostgresVersion from "/pages/api/v1/status/postgres/version/getPostgresVersion.js";
 
 async function status(request, response) {
   const updatedAt = new Date().toISOString();
