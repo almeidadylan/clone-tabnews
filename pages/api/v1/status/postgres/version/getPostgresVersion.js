@@ -13,7 +13,7 @@ async function getPostgresVersion() {
     const result = await client.query("SELECT version();");
 
     const versionString = result.rows[0].version;
-    console.log("Versao do postgres:", versionString);
+    //console.log("Versao do postgres:", versionString);
 
     return {
       simple_version: format(versionString),
