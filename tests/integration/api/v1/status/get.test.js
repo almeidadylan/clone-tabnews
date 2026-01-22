@@ -4,11 +4,16 @@ test("Get to apt/v1/status should return 200", async () => {
 
   // Data validation
   const responseBody = await response.json();
-  expect(responseBody.updated_at).toBeDefined();
 
   const parseUpdatedAt = new Date(responseBody.updated_at).toISOString();
   expect(responseBody.updated_at).toEqual(parseUpdatedAt);
 
+  expect(responseBody.dependencies.database.version).toEqual("16.0");
+  expect(responseBody.dependencies.database.max_connections).toEqual(100);
+  expect(responseBody.dependencies.database.opened_connections).toEqual(1);
+});
+
+/*
   // PostgreSQL Version validation
   const psqlVersionResponse = {
     simple_version: "16.0",
@@ -33,4 +38,4 @@ test("Get to apt/v1/status should return 200", async () => {
   //active connections validation
   expect(responseBody.db_active_connections).toBeDefined();
   expect(typeof responseBody.db_active_connections).toBe("string");
-});
+*/

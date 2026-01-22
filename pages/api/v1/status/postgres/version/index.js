@@ -1,3 +1,4 @@
+/*
 import getPostgresVersion from "./getPostgresVersion";
 
 
@@ -8,3 +9,4 @@ async function postgresVersion(req, res) {
 }
 
 export default postgresVersion;
+*/

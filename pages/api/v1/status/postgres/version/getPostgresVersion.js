@@ -24,9 +24,10 @@ async function getPostgresVersion() {
 
     throw new Error("Falha na comunicação com o banco de dados");
   } finally {
-    if (client) {
-      client.release();
-    }
+    //if (client) {
+    //  client.release();
+    //}
+    client.end();
   }
 }
 

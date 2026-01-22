@@ -1,3 +1,4 @@
+/*
 import getMaxConnections from "./maxConections";
 
 async function maxConnections(req, res) {
@@ -6,3 +7,4 @@ async function maxConnections(req, res) {
 }
 
 export default maxConnections;
+*/
