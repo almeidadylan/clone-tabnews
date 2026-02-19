@@ -39,6 +39,7 @@ async function migrations(request, response) {
     return response.status(200).json(migratedMigrations);
   }
 
+  await dbClient.end();
   return response.status(405).json({ message: "Method not allowed" });
 }
 
