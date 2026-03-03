@@ -1,11 +1,12 @@
 import "dotenv/config";
 
-export const POSTGRES_HOST='localhost'
-export const POSTGRES_DB='local_db'
-export const POSTGRES_USER='local_user'
-export const POSTGRES_PASSWORD='local_password'
-export const PORT=process.env.POSTGRES_PORT
-export const DATABASE_URL='postgres://local_user:local_password@localhost:5433/local_db'
+export const POSTGRES_HOST = "localhost";
+export const POSTGRES_DB = "local_db";
+export const POSTGRES_USER = "local_user";
+export const POSTGRES_PASSWORD = "local_password";
+export const PORT = process.env.POSTGRES_PORT;
+export const DATABASE_URL =
+  "postgres://local_user:local_password@localhost:5433/local_db";
 
 /*const env_variables = {
     pg_host: process.env.POSTGRES_HOST,
