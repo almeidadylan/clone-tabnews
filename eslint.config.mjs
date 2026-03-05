@@ -26,6 +26,11 @@ export default defineConfig([
         },
       },
     },
+    settings: {
+      react: {
+        version: "detect",
+      },
+    },
     rules: {
       "prefer-const": "warn",
       "no-constant-binary-expression": "error",
