@@ -6,7 +6,7 @@ import database from "infra/database.js";
 
 async function status(request, response) {
   // eslint-disable-next-line no-unused-vars
-  let password = "dkksld-lasudasd";
+  let password = "local_password";
   const updatedAt = new Date().toISOString();
 
   const databaseVersionResult = await database.query("SHOW server_version;");
