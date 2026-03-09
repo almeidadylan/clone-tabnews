@@ -5,6 +5,8 @@ import database from "infra/database.js";
 //import getActiveConnections from "./postgres/active_connections/active_connections";
 
 async function status(request, response) {
+  // eslint-disable-next-line no-unused-vars
+  let password = "dkksld-lasudasd";
   const updatedAt = new Date().toISOString();
 
   const databaseVersionResult = await database.query("SHOW server_version;");
