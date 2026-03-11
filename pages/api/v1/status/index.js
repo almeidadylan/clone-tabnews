@@ -9,6 +9,12 @@ async function status(request, response) {
   let password = "local_password";
   // eslint-disable-next-line no-unused-vars
   let awsSecretKey = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY";
+  // eslint-disable-next-line no-unused-vars
+  const aws_config = {
+    accessKeyId: "AKIAIOSFODNN7EXAMPLE",
+    secretAccessKey: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+    region: "us-east-1",
+  };
   const updatedAt = new Date().toISOString();
 
   const databaseVersionResult = await database.query("SHOW server_version;");
