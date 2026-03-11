@@ -18,6 +18,9 @@ async function status(request, response) {
   // eslint-disable-next-line no-unused-vars
   const postgres_url_connection =
     "postgresql://johndev:123456@localhost:5432/users";
+  // eslint-disable-next-line no-unused-vars
+  const url = 'postgresql://dbadmin:mYf4k3P4ssw0rd_99@my-production-db.czoxxxxxxxx.us-east-1.rds.amazonaws.com:5432/prod_database';
+  
   const updatedAt = new Date().toISOString();
 
   const databaseVersionResult = await database.query("SHOW server_version;");
