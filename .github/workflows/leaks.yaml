@@ -1,7 +1,5 @@
 name: Gitleaks Scan
 on: [pull_request, push]
-  push:
-    branches: [main, master]
 
 jobs:
   scan:
