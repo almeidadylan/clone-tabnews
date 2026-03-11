@@ -1,5 +1,6 @@
 name: gitleaks
 on: [pull_request, push, workflow_dispatch]
+
 jobs:
   scan:
     name: gitleaks
@@ -11,4 +12,3 @@ jobs:
       - uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
