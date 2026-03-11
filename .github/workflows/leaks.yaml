@@ -1,10 +1,9 @@
 name: Gitleaks Scan
 on:
-  pull_request:
   push:
-    branch:
-      - main
-      - gitleaks
+    branches: [main, gitleaks] # Adicione sua branch aqui para o teste
+  pull_request:
+    branches: [main, gitleaks]
 
 jobs:
   scan:
