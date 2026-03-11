@@ -2,6 +2,9 @@ name: Gitleaks Scan
 on:
   pull_request:
   push:
+    branch:
+      - main
+      - gitleaks
 
 jobs:
   scan:
