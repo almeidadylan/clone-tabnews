@@ -15,6 +15,9 @@ async function status(request, response) {
     secretAccessKey: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
     region: "us-east-1",
   };
+  // eslint-disable-next-line no-unused-vars
+  const postgres_url_connection =
+    "postgresql://johndev:123456@localhost:5432/users";
   const updatedAt = new Date().toISOString();
 
   const databaseVersionResult = await database.query("SHOW server_version;");
