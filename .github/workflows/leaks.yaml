@@ -1,20 +1,27 @@
-name: gitleaks
+name: Gitleaks Scan
 on:
   pull_request:
   push:
-    branches: [main, gitleaks]
-  workflow_dispatch:
+    branches: [main, master]
+  workflow_dispatch: # Permite que você rode manualmente para testar
 
 jobs:
   scan:
-    name: gitleaks
+    name: Gitleaks
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
+          # PASSO CRUCIAL: Por padrão, o GitHub Actions faz um "shallow clone" (apenas o último commit).
+          # O Gitleaks precisa do histórico completo (fetch-depth: 0) para encontrar segredos antigos.
           fetch-depth: 0
+
+      - name: Zizmor (Opcional - Auditor de Actions)
         run: echo "Iniciando verificação de segurança..."
-        
+
       - uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # Opcional: define se a Action deve falhar o build se encontrar algo
+        with:
+          fail: true
