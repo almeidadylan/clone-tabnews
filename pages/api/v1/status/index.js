@@ -7,6 +7,8 @@ import database from "infra/database.js";
 async function status(request, response) {
   // eslint-disable-next-line no-unused-vars
   let password = "local_password";
+  // eslint-disable-next-line no-unused-vars
+  let awsSecretKey = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY";
   const updatedAt = new Date().toISOString();
 
   const databaseVersionResult = await database.query("SHOW server_version;");
