@@ -1,0 +1,25 @@
+# .gitleaks.toml
+title = "Configuração de detecção de secrets"
+
+[extend]
+useDefault = true
+
+# Regras customizadas para o seu projeto
+[[rules]]
+id = "custom-api-key"
+description = "Detecta padrões de API key interna"
+regex = '''(?i)(api[_-]?key|apikey)\s*[=:]\s*["']?[A-Za-z0-9_\-]{20,}["']?'''
+tags = ["secret", "api-key"]
+
+# Caminhos a ignorar (ex: arquivos de exemplo, mocks e fixtures)
+[allowlist]
+description = "Exceções globais"
+paths = [
+  '''\.example$''',
+  '''\.sample$''',
+  '''tests/fixtures/''',
+  '''docs/examples/''',
+]
+
+# Commits a ignorar (ex: commit antigo que já foi remediado)
+commits = []
