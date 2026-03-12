@@ -12,7 +12,7 @@ async function status(request, response) {
   // eslint-disable-next-line no-unused-vars
   const aws_config = {
     accessKeyId: "AKIAISOFODNN7ABCDPLA",
-    secretAccessKey: "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",
+    //secretAccessKey: "xGuslWOrmCINO/K7MDENG/aTwVdeEZABCDPLAKEY",
     region: "us-east-1",
   };
   // eslint-disable-next-line no-unused-vars
