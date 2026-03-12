@@ -1,27 +1,38 @@
-name: Gitleaks Scan
+name: Secret Scanner
+
 on:
   push:
-    branches: [main, gitleaks] # Adicione sua branch aqui para o teste
+    branches: ["**"]          # roda em qualquer push
   pull_request:
-    branches: [main, gitleaks]
+    branches: ["**"]          # roda em qualquer PR
+  schedule:
+    - cron: "0 2 * * 1"       # varre tudo toda segunda às 02h (histórico completo)
 
 jobs:
-  scan:
-    name: Gitleaks
+  gitleaks:
+    name: Detectar secrets e credenciais expostas
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout do código
+        uses: actions/checkout@v4
         with:
-          # PASSO CRUCIAL: Por padrão, o GitHub Actions faz um "shallow clone" (apenas o último commit).
-          # O Gitleaks precisa do histórico completo (fetch-depth: 0) para encontrar segredos antigos.
-          fetch-depth: 0
+          fetch-depth: 0        # IMPORTANTE: busca o histórico completo do git
+                                # sem isso, só o último commit seria analisado
 
-      - name: Zizmor (Opcional - Auditor de Actions)
-        run: echo "Iniciando verificação de segurança..."
-
-      - uses: gitleaks/gitleaks-action@v2
+      - name: Executar Gitleaks
+        uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        # Opcional: define se a Action deve falhar o build se encontrar algo
+          # GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
+          # ↑ necessário apenas para repositórios privados em organizações
         with:
-          fail: true
+          config-path: .gitleaks.toml   # aponta para sua configuração customizada
+
+      - name: Publicar relatório como artefato
+        if: failure()                   # só sobe o relatório se o scan falhar
+        uses: actions/upload-artifact@v4
+        with:
+          name: gitleaks-report
+          path: results.sarif           # relatório em formato padrão SARIF
+          retention-days: 30
