@@ -2,11 +2,11 @@ name: Secret Scanner
 
 on:
   push:
-    branches: ["**"]          # roda em qualquer push
+    branches: ["**"] # roda em qualquer push
   pull_request:
-    branches: ["**"]          # roda em qualquer PR
+    branches: ["**"] # roda em qualquer PR
   schedule:
-    - cron: "0 2 * * 1"       # varre tudo toda segunda às 02h (histórico completo)
+    - cron: "0 2 * * 1" # varre tudo toda segunda às 02h (histórico completo)
 
 jobs:
   gitleaks:
@@ -17,8 +17,9 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0        # IMPORTANTE: busca o histórico completo do git
-                                # sem isso, só o último commit seria analisado
+          fetch-depth:
+            0 # IMPORTANTE: busca o histórico completo do git
+            # sem isso, só o último commit seria analisado
 
       - name: Executar Gitleaks
         uses: gitleaks/gitleaks-action@v2
@@ -27,12 +28,12 @@ jobs:
           # GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
           # ↑ necessário apenas para repositórios privados em organizações
         with:
-          config-path: .gitleaks.toml   # aponta para sua configuração customizada
+          config-path: .gitleaks.toml # aponta para sua configuração customizada
 
       - name: Publicar relatório como artefato
-        if: failure()                   # só sobe o relatório se o scan falhar
+        if: failure() # só sobe o relatório se o scan falhar
         uses: actions/upload-artifact@v4
         with:
           name: gitleaks-report
-          path: results.sarif           # relatório em formato padrão SARIF
+          path: results.sarif # relatório em formato padrão SARIF
           retention-days: 30
