@@ -1,6 +1,8 @@
 name: Secret Scanner
 
 on:
+  push:
+    branches: ["**"] # roda em qualquer push
   pull_request:
     branches: ["**"] # roda em qualquer PR
   schedule:
