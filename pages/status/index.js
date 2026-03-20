@@ -19,7 +19,7 @@ export default function StatusPage() {
 
 function GetInfoFromStatus() {
   const response = useSWR("/api/v1/status", fetchAPI, {
-    refreshInterval: 3000,
+    refreshInterval: 5000,
   });
 
   return (
@@ -31,7 +31,7 @@ function GetInfoFromStatus() {
 
 function UpdatedAt() {
   const { isLoading, data } = useSWR("/api/v1/status", fetchAPI, {
-    refreshInterval: 2000,
+    refreshInterval: 5000,
   });
 
   let updatedAtText = "Carregando...";
@@ -62,12 +62,12 @@ function DatabaseStatus() {
         </div>
       </>
     );
-
-    return (
-      <>
-        <h2>Database</h2>
-        <div>{databaseStatusInformation}</div>
-      </>
-    );
   }
+
+  return (
+    <>
+      <h2>Database</h2>
+      <div>{databaseStatusInformation}</div>
+    </>
+  );
 }
